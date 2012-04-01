@@ -1,0 +1,31 @@
+
+<style type="text/css" media="screen">
+
+
+</style>
+
+
+<script>
+$function(){
+	$('.pyramid-cell').css("text-decoration", "blink");
+});
+
+</script>
+
+<div class = 'pyramid'>
+<% @bands.each do |band| %>
+<%= content_tag "div", class: "pyramid-cell", data: {url: band.Rating} do %>
+  <tr>
+    <td class='band-name'><%= band.Name %></td> <br/>
+    <td class='band-page'><%= band.HomePage %></td>
+    <td><% band.Rating %></td>
+    <td><%= link_to 'Show', band %></td>
+    <td><%= link_to 'Edit', edit_band_path(band) %></td>
+    <td><%= link_to 'Destroy', band, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+<% end %>
+
+<br />
+<%= link_to 'New Band', new_band_path %>
+</div>
